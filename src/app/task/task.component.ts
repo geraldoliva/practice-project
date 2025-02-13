@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Task } from '../models/Task.model';
-import { DUMMY_TASKS } from '../dummy-tasks';
-
+import { dummyTasks } from '../dummy-tasks';
 
 @Component({
   selector: 'app-task',
@@ -11,6 +10,7 @@ import { DUMMY_TASKS } from '../dummy-tasks';
   styleUrl: './task.component.css',
 })
 export class TaskComponent {
-  @Input() selectedId!: string;
-  tasks = DUMMY_TASKS;
+  @Input() userId!: string;
+  @Input() tasks!: Task[]
+
 }

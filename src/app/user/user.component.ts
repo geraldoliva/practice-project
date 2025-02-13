@@ -10,9 +10,10 @@ import { User } from '../models/User.model';
 })
 export class UserComponent {
   @Input({required: true}) user!: User;
-  @Output() selectedId = new EventEmitter<string>()
+  @Output() select = new EventEmitter<string>()
 
   onSelectUser() {
-    this.selectedId.emit(this.user.id)
+    this.select.emit(this.user.id)
+    console.log("emitted from user component: " + this.user.id)
   }
 }
