@@ -1,14 +1,10 @@
-<section id="tasks">
-  <header>
-    <h2>{{ userId }}'s Tasks</h2>
-    <menu>
-      <button>Add Task</button>
-    </menu>
-  </header>
-</section>
-
-<ul>
-  @for (task of tasks; track $index) {
-  <li>{{ task.summary }}</li>
-  }
-</ul>
+<app-card>
+  <article>
+    <h2>{{ task.title }}</h2>
+    <time>{{ task.dueDate | date: 'fullDate'}}</time>
+    <p>{{ task.summary }}</p>
+    <p class="actions">
+      <button (click)="onCompleteTask()">Complete</button>
+    </p>
+  </article>
+</app-card>

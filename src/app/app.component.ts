@@ -3,26 +3,26 @@ import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
 import { User } from './models/User.model';
 import { DUMMY_USERS } from './dummy-users';
-import { TaskComponent } from './task/task.component';
 import { Task } from './models/Task.model';
 import { dummyTasks } from './dummy-tasks';
+import { TasksComponent } from './tasks/tasks.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, UserComponent, TaskComponent],
+  imports: [HeaderComponent, UserComponent, TasksComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
   users: User[] = DUMMY_USERS;
-  tasks: Task[] = dummyTasks
+  name!: string
+  
   userId!: string;
 
   onSelectUser(id: string) {
     this.userId = id;
-    
-    this.tasks = dummyTasks.filter((task) => task.userId === this.userId);
-    console.log("from app: " + this.userId)
+    let user = this.users.filter(user => user.id === this.userId)[0]
+    this.name = user.name
   }
 }
